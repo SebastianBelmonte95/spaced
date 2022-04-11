@@ -14,6 +14,7 @@ class Ship(ABC):
         ideal_crew_count: int,
         crew_capacity: int,
         crew: int,
+        hull: int,
         engines: List[Engine],
         fuel_capacity: float,
         fuel: float,
@@ -31,6 +32,7 @@ class Ship(ABC):
         self.ideal_crew_count = ideal_crew_count
         self.crew_capacity = crew_capacity
         self.crew = crew
+        self.hull = hull
         self.engines = engines
         self.fuel_capacity = fuel_capacity
         self.fuel = fuel
