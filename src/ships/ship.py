@@ -14,7 +14,6 @@ class Ship(ABC):
         ideal_crew_count: int,
         crew_capacity: int,
         crew: int,
-        engine_slots: int,
         engines: List[Engine],
         fuel_capacity: float,
         fuel: float,
@@ -22,10 +21,8 @@ class Ship(ABC):
         cargo_volume_capacity: float,
         cargo: List[Any],
         armor: Armor,
-        weapon_slots: dict,  # {"large": 3, "medium": 3, "small": 3, "epic": 0}
         weapons: dict,  # {"large": List[Weapon], "medium": List[Weapon], "small": List[Weapon], "epic": List[Weapon]}
         ftl_drive: FTLDrive,
-        docking_bay_slots: int,
         docking_bays: List[DockingBay],
     ):
         self.captain = captain
@@ -34,7 +31,6 @@ class Ship(ABC):
         self.ideal_crew_count = ideal_crew_count
         self.crew_capacity = crew_capacity
         self.crew = crew
-        self.engine_slots = engine_slots
         self.engines = engines
         self.fuel_capacity = fuel_capacity
         self.fuel = fuel
@@ -42,10 +38,8 @@ class Ship(ABC):
         self.cargo_volume_capacity = cargo_volume_capacity
         self.cargo = cargo
         self.armor = armor
-        self.weapon_slots = weapon_slots
         self.weapons = weapons
         self.ftl_drive = ftl_drive
-        self.docking_bay_slots = docking_bay_slots
         self.docking_bays = docking_bays
 
     @property
