@@ -1,20 +1,24 @@
 from abc import ABC
-from typing import Any, List
+from typing import Any, List, Optional, Union
 from src.ships.engines import Engine
-from src.misc.modules import Armor, Weapon, FTLDrive, DockingBay, Fuel
+from src.modules.armor import Armor
+from src.modules.weapons import Weapon
+from src.modules.misc import FTLDrive, DockingBay, Fuel
+from src.modules.hull import Hull
 from src.characters.base import Officer
 
 
 class Ship(ABC):
     def __init__(
         self,
-        captain: Officer,
+        id: str,
+        captain: Union[Officer, None],
         ideal_officer_count: int,
         officers: int,
         ideal_crew_count: int,
         crew_capacity: int,
         crew: int,
-        hull: int,
+        hull: Hull,
         engines: List[Engine],
         fuel_capacity: float,
         fuel: float,
@@ -24,8 +28,9 @@ class Ship(ABC):
         armor: Armor,
         weapons: dict,  # {"large": List[Weapon], "medium": List[Weapon], "small": List[Weapon], "epic": List[Weapon]}
         ftl_drive: FTLDrive,
-        docking_bays: List[DockingBay],
+        docking_bays: Union[List[DockingBay], None],
     ):
+        self.id = id
         self.captain = captain
         self.ideal_officer_count = ideal_officer_count
         self.officers = officers
@@ -44,9 +49,12 @@ class Ship(ABC):
         self.ftl_drive = ftl_drive
         self.docking_bays = docking_bays
 
+    def __str__(self) -> str:
+        return f"Ship:\n\tID: {self.id}\n\tHull:\n\t\tSize: {self.hull.size}\n\t\tIntegrity: [{self.hull.hp}/{self.hull.max_hp}]({round((self.hull.hp/self.hull.max_hp)*100,2)}%)"
+
     @property
-    def displacement(self):
-        return
+    def displacement(self) -> float:
+        return 0.1
 
     @property
     def weapons_weight(self) -> float:
@@ -90,14 +98,15 @@ class Ship(ABC):
         return 1.0
 
     @property
-    def speed_multiplier(self):
+    def speed_multiplier(self) -> float:
         multiplier = (
             self.crew_efficiency
             + self.officer_efficiency
             + self.fuel_type.efficiency
-            + self.captain.speed_bonus
             - self.weight_penalty
         )
+        if self.captain:
+            return multiplier + self.captain.speed_bonus
         return multiplier
 
     @property
