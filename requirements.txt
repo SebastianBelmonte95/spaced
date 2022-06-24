@@ -1,0 +1,5 @@
+pytest-cov==3.0.0
+pytest==7.1.2
+flake8==4.0.1
+black==22.3.0
+python-semantic-release==v7.28.1
