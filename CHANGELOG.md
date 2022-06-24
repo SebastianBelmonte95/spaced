@@ -4,6 +4,11 @@
 
 ## v0.1.0 (2022-06-24)
 ### Feature
+* Created base module ([`b892f07`](https://github.com/SebastianBelmonte95/spaced/commit/b892f07aec4befd942f85f38af1470aa4b878c16))
+* Created base module ([`b64891b`](https://github.com/SebastianBelmonte95/spaced/commit/b64891b519c1a3a48557ace5c25edec28f7fbd09))
+
+## v0.1.0 (2022-06-24)
+### Feature
 * Created base module ([`b64891b`](https://github.com/SebastianBelmonte95/spaced/commit/b64891b519c1a3a48557ace5c25edec28f7fbd09))
 
 ## v0.1.5 (2022-06-24)
