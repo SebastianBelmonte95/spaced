@@ -4,6 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class Faction:
     tag: str
+    name: str = "Faction"
     accuracy_bonus: float = 0
     accuracy_multiplier: float = 1
     cruise_speed_bonus: float = 0
