@@ -21,10 +21,8 @@ class Weapon(Module):
         fabricator: Faction,
         user: Faction,
     ) -> None:
-        super().__init__(min_crew, max_crew, weight)
+        super().__init__(min_crew, max_crew, weight, fabricator, user)
         self._weapon_type = weapon_type
-        self._fabricator = fabricator
-        self._user = user
         self._base_damage = base_damage
         self._base_range = base_range
         self._base_accuracy = base_accuracy
