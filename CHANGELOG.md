@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.4 (2022-06-24)
+### Fix
+* Readded dependency installer ([`f50e607`](https://github.com/SebastianBelmonte95/spaced/commit/f50e60705fb8761522ae9e90479fdd6feecae26a))
+
 ## v0.1.3 (2022-06-24)
 ### Fix
 * Removed dependency install from release job ([`631a300`](https://github.com/SebastianBelmonte95/spaced/commit/631a300203a206e0aeecf26e9b1e6a409da95296))
