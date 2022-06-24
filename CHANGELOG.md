@@ -2,6 +2,15 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.0 (2022-06-24)
+### Feature
+* Added more weapon properties ([`37d63c6`](https://github.com/SebastianBelmonte95/spaced/commit/37d63c674126ef77acd71e5f134fc4aace30e2dd))
+* Added Weapon module w/ damage fnc ([`79fe9b4`](https://github.com/SebastianBelmonte95/spaced/commit/79fe9b40b6f835cc0d88be1ad66eca9c379e9221))
+* Added base faction dataclass ([`f9952e6`](https://github.com/SebastianBelmonte95/spaced/commit/f9952e61df30c91ac83c18b2fc6d3c102b6b58d2))
+
+### Fix
+* Added accuracy bonuses ([`3a94abb`](https://github.com/SebastianBelmonte95/spaced/commit/3a94abbb1de16f1248aadcd821bca4c5c601dd1a))
+
 ## v0.1.0 (2022-06-24)
 ### Feature
 * Created base module ([`b892f07`](https://github.com/SebastianBelmonte95/spaced/commit/b892f07aec4befd942f85f38af1470aa4b878c16))
