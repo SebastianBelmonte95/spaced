@@ -11,6 +11,7 @@ def base_module():
         weight=200,
         fabricator=get_test_faction(),
         user=get_test_faction(),
+        hp=1000,
     )
 
 
@@ -24,9 +25,11 @@ def test_max_crew(base_module):
 
 def test_weight(base_module):
     assert base_module.weight == 200
-    
+
+
 def test_fabricator(base_module):
     assert base_module.fabricator == "Faction"
-    
+
+
 def test_user(base_module):
     assert base_module.user == "Faction"
