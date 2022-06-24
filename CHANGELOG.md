@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.0 (2022-06-24)
+### Feature
+* Created base module ([`b64891b`](https://github.com/SebastianBelmonte95/spaced/commit/b64891b519c1a3a48557ace5c25edec28f7fbd09))
+
 ## v0.1.5 (2022-06-24)
 ### Fix
 * Testing ignoring token ([`637d5c6`](https://github.com/SebastianBelmonte95/spaced/commit/637d5c67f6f13ffae0f9f6741ac920e18e39e07b))
