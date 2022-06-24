@@ -1,0 +1,77 @@
+name: CI/CD
+
+on: 
+  push:
+    branches:
+      - 'master'
+      - 'main'
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9','3.10']
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: make install
+
+      - name: Lint
+        run: make lint
+
+      - name: Build Coverage File
+        run: make test
+
+      - name: Formatting Code
+        run: make format
+
+  Release:
+    needs:
+      - Build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Installing Dependencies
+        run: make install
+
+      - name: Releasing repo
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          make release
+          
+  Notify-Success:
+    runs-on: ubuntu-latest
+    needs:
+      - Build
+      - Release
+    if: ${{ always() && (needs.Build.result=='success' && needs.Release.result=='success') }}
+    steps:
+      - uses: sarisia/actions-status-discord@v1
+        with:
+          title: 👍 Successful Build
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: 0x008000
+          username: 🤖 Build Bot
+
+  Notify-Failure:
+    runs-on: ubuntu-latest
+    needs:
+      - Build
+      - Release
+    if: ${{ always() && (needs.Build.result=='failure' || needs.Release.result=='failure') }}
+    steps:
+      - uses: sarisia/actions-status-discord@v1
+        with:
+          title: ✝️ Failed Build
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          color: 0xff0000
+          username: 🤖 Build Bot
