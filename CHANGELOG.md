@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.5 (2022-06-24)
+### Fix
+* Testing ignoring token ([`637d5c6`](https://github.com/SebastianBelmonte95/spaced/commit/637d5c67f6f13ffae0f9f6741ac920e18e39e07b))
+
 ## v0.1.4 (2022-06-24)
 ### Fix
 * Readded dependency installer ([`f50e607`](https://github.com/SebastianBelmonte95/spaced/commit/f50e60705fb8761522ae9e90479fdd6feecae26a))
