@@ -15,6 +15,7 @@ def kinetic_weapon():
         base_accuracy=70,
         fabricator=get_test_faction(),
         user=get_test_faction(),
+        hp=1000,
     )
 
 
@@ -30,6 +31,7 @@ def energy_weapon():
         base_accuracy=60,
         fabricator=get_test_faction(),
         user=get_test_faction(),
+        hp=1000,
     )
 
 
