@@ -10,29 +10,39 @@ class Module(ABC):
         weight: int,
         fabricator: Faction,
         user: Faction,
+        hp: int,
     ) -> None:
         self._min_crew = min_crew
         self._max_crew = max_crew
         self._weight = weight
         self._fabricator = fabricator
         self._user = user
+        self._hp = hp
 
     @property
-    def min_crew(self):
+    def min_crew(self) -> int:
         return self._min_crew
 
     @property
-    def max_crew(self):
+    def max_crew(self) -> int:
         return self._max_crew
 
     @property
-    def weight(self):
+    def weight(self) -> int:
         return self._weight
 
     @property
-    def fabricator(self):
+    def fabricator(self) -> str:
         return self._fabricator.name
 
     @property
-    def user(self):
+    def user(self) -> str:
         return self._user.name
+
+    @property
+    def hp(self) -> int:
+        return self._hp
+
+    def destroy(self) -> None:
+        print(f"{type(self)} destroyed.")
+        del self
