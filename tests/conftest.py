@@ -1,6 +1,7 @@
 import pytest
 from src.base.faction import Faction
 from src.base.module import Module
+from src.base.position import Position
 
 
 def get_test_faction() -> Faction:
@@ -28,4 +29,5 @@ def module():
         fabricator=get_test_faction(),
         user=get_test_faction(),
         hp=1000,
+        position=Position(x=10, y=10),
     )
