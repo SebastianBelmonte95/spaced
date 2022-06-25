@@ -20,8 +20,15 @@ class Entity(ABC):
     def move(self, new_position: Position) -> None:
         self._position = new_position
 
+    @property
+    def free_module_slots(self) -> int:
+        return self.frame.module_slots - len(self._module_slots)
+
+    def has_free_slots(self) -> bool:
+        return len(self._module_slots) > self.frame.module_slots
+
     def install_module(self, module: Module) -> None:
-        if len(self._module_slots) > self.frame.module_slots:
+        if self.has_free_slots():
             self._module_slots.append(module)
             print(f"{module} installed in {self._name}.")
             return
