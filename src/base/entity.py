@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import List
+from typing import List, Tuple
 from src.base.position import Position
 from src.base.module import Module
 from src.base.faction import Faction
@@ -19,6 +19,10 @@ class Entity(ABC):
 
     def move(self, new_position: Position) -> None:
         self._position = new_position
+
+    @property
+    def position(self) -> Tuple[float, float]:
+        return self._position.x, self._position.y
 
     @property
     def free_module_slots(self) -> int:
