@@ -4,6 +4,7 @@ from src.base.position import Position
 from src.base.module import Module
 from src.base.faction import Faction
 from src.base.frame import Frame
+from src.exceptions.entity import NoSlotsAvailableException
 
 
 class Entity(ABC):
@@ -36,7 +37,7 @@ class Entity(ABC):
             self._module_slots.append(module)
             print(f"{module} installed in {self._name}.")
             return
-        print(f"{module} could not be installed in {self._name}. Module slots full")
+        raise NoSlotsAvailableException(self)
 
     def get_modules(self) -> List[Module]:
         return self._module_slots
