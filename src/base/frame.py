@@ -42,4 +42,5 @@ class Frame(ABC):
     def repair(self, change: int) -> None:
         if self.hp + change > self.max_hp:
             self._hp = self.max_hp
+            return
         self._hp += change
