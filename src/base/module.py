@@ -11,6 +11,7 @@ class Module(ABC):
         fabricator: Faction,
         user: Faction,
         hp: int,
+        module_name: str = "Module",
     ) -> None:
         self._min_crew = min_crew
         self._max_crew = max_crew
@@ -18,6 +19,10 @@ class Module(ABC):
         self._fabricator = fabricator
         self._user = user
         self._hp = hp
+        self._name = module_name
+
+    def __str__(self) -> str:
+        return self._name
 
     @property
     def min_crew(self) -> int:
