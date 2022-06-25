@@ -52,6 +52,5 @@ def test_reduce_hp(frame, change, expected):
 )
 def test_repair(frame, change, expected):
     frame.reduce_hp(5000)
-    print(frame.hp)
     frame.repair(change)
     assert frame.hp == expected
