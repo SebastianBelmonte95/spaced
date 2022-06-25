@@ -24,9 +24,14 @@ class Frame(ABC):
         del self
 
     def set_hp(self, new_hp: int) -> None:
-        self._hp = new_hp
+        if new_hp > self.max_hp:
+            self._hp = self.max_hp
+        else:
+            self._hp = new_hp
 
     def set_max_hp(self, new_hp: int) -> None:
+        if new_hp <= 0:
+            raise ValueError({"message": "Max HP must be greater than zero!"})
         self._max_hp = new_hp
 
     def reduce_hp(self, change: int) -> None:
