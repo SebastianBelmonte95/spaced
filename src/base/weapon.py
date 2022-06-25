@@ -1,6 +1,9 @@
 from enum import Enum, auto
 from src.base.module import Module
 from src.base.faction import Faction
+from src.utils import distance_between
+from src.base.position import Position
+from src.exceptions.position import NoPositionException
 
 
 class WeaponType(Enum):
@@ -21,8 +24,9 @@ class Weapon(Module):
         base_accuracy: int,
         fabricator: Faction,
         user: Faction,
+        name: str = "Weapon",
     ) -> None:
-        super().__init__(min_crew, max_crew, weight, fabricator, user, hp)
+        super().__init__(min_crew, max_crew, weight, fabricator, user, hp, name)
         self._weapon_type = weapon_type
         self._base_damage = base_damage
         self._base_range = base_range
@@ -66,3 +70,16 @@ class Weapon(Module):
     @property
     def type(self):
         return self._weapon_type
+
+    def set_position(self, position: Position):
+        # if hasattr(self,"position"):
+        self._position = position
+
+    def get_position(self):
+        if hasattr(self, "_position"):
+            return self._position
+        else:
+            raise NoPositionException(self)
+
+    def is_in_range(self, target) -> bool:
+        return distance_between(self, target) <= self.range
