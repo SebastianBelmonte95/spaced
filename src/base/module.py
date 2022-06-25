@@ -47,7 +47,3 @@ class Module(ABC):
     @property
     def hp(self) -> int:
         return self._hp
-
-    def destroy(self) -> None:
-        print(f"{type(self)} destroyed.")
-        del self
