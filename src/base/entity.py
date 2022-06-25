@@ -29,7 +29,7 @@ class Entity(ABC):
         return self.frame.module_slots - len(self._module_slots)
 
     def has_free_slots(self) -> bool:
-        return len(self._module_slots) > self.frame.module_slots
+        return self.free_module_slots > 0
 
     def install_module(self, module: Module) -> None:
         if self.has_free_slots():
