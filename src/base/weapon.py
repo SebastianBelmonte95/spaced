@@ -1,4 +1,5 @@
 from enum import Enum, auto
+from src.base.entity import Entity
 from src.base.module import Module
 from src.base.faction import Faction
 from src.utils import distance_between
@@ -74,5 +75,5 @@ class Weapon(Module):
     def type(self):
         return self._weapon_type
 
-    def is_in_range(self, target) -> bool:
+    def is_in_range(self, target: Entity) -> bool:
         return distance_between(self, target) <= self.range
