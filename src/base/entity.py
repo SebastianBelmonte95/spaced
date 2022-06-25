@@ -18,6 +18,9 @@ class Entity(ABC):
         self.faction = faction
         self._name = name
 
+    def __str__(self) -> str:
+        return self._name
+
     def move(self, new_position: Position) -> None:
         self._position = new_position
 
