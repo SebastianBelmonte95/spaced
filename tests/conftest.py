@@ -2,6 +2,8 @@ import pytest
 from src.base.faction import Faction
 from src.base.module import Module
 from src.base.position import Position
+from src.base.entity import Entity
+from src.base.frame import Frame
 
 
 def get_test_faction() -> Faction:
@@ -30,4 +32,24 @@ def module():
         user=get_test_faction(),
         hp=1000,
         position=Position(x=10, y=10),
+    )
+
+
+@pytest.fixture(scope="session")
+def entity1():
+    return Entity(
+        position=Position(x=0, y=0),
+        frame=Frame(module_slots=6, max_hp=10000),
+        faction=get_test_faction(),
+        name="test entity",
+    )
+
+
+@pytest.fixture(scope="session")
+def entity2():
+    return Entity(
+        position=Position(x=3, y=4),
+        frame=Frame(module_slots=6, max_hp=10000),
+        faction=get_test_faction(),
+        name="test entity 2",
     )
