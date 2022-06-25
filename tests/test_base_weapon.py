@@ -2,6 +2,8 @@ import pytest
 from src.base.position import Position
 from src.base.weapon import Weapon, WeaponType
 from tests.conftest import get_test_faction
+from src.base.entity import Entity
+from src.base.frame import Frame
 
 
 @pytest.fixture
@@ -64,3 +66,15 @@ def test_energy_weapon_type(energy_weapon):
 
 def test_accuracy(kinetic_weapon):
     assert kinetic_weapon.accuracy == 82
+
+
+def test_is_in_range(kinetic_weapon, energy_weapon, entity1):
+    assert kinetic_weapon.is_in_range(entity1) is True
+    assert energy_weapon.is_in_range(entity1) is True
+    entity1.move(Position(x=800, y=900))
+    assert kinetic_weapon.is_in_range(entity1) is False
+    assert energy_weapon.is_in_range(entity1) is True
+    entity1.move(Position(x=900, y=900))
+    assert energy_weapon.is_in_range(entity1) is False
+    entity1.move(Position(x=0, y=0))
+    
