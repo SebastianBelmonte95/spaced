@@ -1,4 +1,5 @@
 import pytest
+from src.base.position import Position
 from src.base.weapon import Weapon, WeaponType
 from tests.conftest import get_test_faction
 
@@ -16,6 +17,7 @@ def kinetic_weapon():
         fabricator=get_test_faction(),
         user=get_test_faction(),
         hp=1000,
+        position=Position(0, 0),
     )
 
 
@@ -32,6 +34,7 @@ def energy_weapon():
         fabricator=get_test_faction(),
         user=get_test_faction(),
         hp=1000,
+        position=Position(0, 0),
     )
 
 
