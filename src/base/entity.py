@@ -28,6 +28,9 @@ class Entity(ABC):
     def position(self) -> Tuple[float, float]:
         return self._position.x, self._position.y
 
+    def get_position(self) -> Position:
+        return self._position
+
     @property
     def free_module_slots(self) -> int:
         return self.frame.module_slots - len(self._module_slots)

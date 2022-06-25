@@ -40,6 +40,13 @@ def test_move(entity, new_position, expected_x, expected_y):
     assert entity.position == (expected_x, expected_y)
 
 
+def test_get_position(entity):
+    pos = entity.get_position()
+    expected = Position(0, 0)
+    assert pos.x == expected.x
+    assert pos.y == expected.y
+
+
 def test_free_module_slots_init(entity):
     assert entity.free_module_slots == 6
 
